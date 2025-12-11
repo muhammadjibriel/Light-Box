@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri</title>
+</head>
+<body>
+    <h1>PROSES NASI</h1>
+    <div class="container">
+        <ul class="galeri">
+            <li>
+                <!-- memberikan id pada setiap overlay -->
+                <a href="#padi">
+                    <img src="img/thumnail/padi_imresizer.jpg" alt="padi">
+                <span>Padi</span>
+                </a>
+                <!-- overlay -->
+                <div class="overlay" id="padi">
+                    <!-- tanda close -->
+                    <a href="#hidangkan" class="prev">prev</a>
+                    <img src="img/fullsize/padi.png" alt="padi">
+                    <a href="#beras" class="next">next</a>
+                    <a href="#" class="close">X</a>
+                </div>
+            </li>
+            <li>
+                <a href="#beras">
+                <img src="img/thumnail/beras_imresizer.png" alt="beras">
+                <span>beras</span>
+                </a>
+                <div class="overlay" id="beras">
+                    <!-- tanda close -->
+                    <a href="#padi" class="prev">prev</a>
+                    <img src="img/fullsize/beras.png" alt="beras">
+                    <a href="#nasi" class="next">next</a>
+                    <a href="#" class="close">X</a>
+                </div>
+            </li>
+            <li>
+                <a href="#nasi">
+                <img src="img/thumnail/nasi_imresizer.jpg" alt="nasi">
+                <span>nasi</span>
+                </a>
+                <div class="overlay" id="nasi">
+                    <!-- tanda close -->
+                    <a href="#beras" class="prev">prev</a>
+                    <img src="img/fullsize/nasi.png" alt="nasi">
+                    <a href="#hidangkan" class="next">next</a>
+                    <a href="#" class="close">X</a>
+                </div>
+            </li>
+            <li>
+                <a href="#hidangkan">
+                <img src="img/thumnail/hidangkan_imresizer.jpg" alt="tambahkanlauk">
+                <span class="lauk">berikan lauk</span>
+                </a>
+                <div class="overlay" id="hidangkan">
+                    <!-- tanda close -->
+                    <a href="#nasi" class="prev">prev</a>
+                    <img src="img/fullsize/hidangkan.png" alt="hidangkan">
+                    <a href="#padi" class="next">next</a>
+                    <a href="#" class="close">X</a>
+                </div>
+            </li>
+            <!-- untuk clear harus diletakan pada akhir child/sesuai keadaan (li) -->
+            <div class="clear"></div>
+        </ul>
+    </div>
+</body>
+</html>

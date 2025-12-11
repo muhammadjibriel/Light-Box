@@ -1,0 +1,217 @@
+/* untuk font */
+/* jangan lupa tambahkan format font */
+@font-face {
+    font-family: 'exo';
+    src: url(../fonts/exo-webfont/exo-bold-webfont.woff) format('woff');
+}
+/* untuk style utama */
+body {
+    font: 18px/36px 'exo','arial','sans-serif' ;
+    background-color: rgba(248, 195, 48, 1);
+}
+
+body h1 {
+    font-size: 60px;
+/* margin (atas,kanan,bawah,kiri)/(atas & bawah , kanan & kiri) */
+    margin: 70px 0;
+    text-align: center;
+    color: rgb(248, 242, 242);
+/* text-shadow tidak memiliki spread seperti box-shadow */
+/* text-shadow : x y blur warna; */
+    text-shadow: 0 0 13px black;
+}
+
+.container {
+    width: 600px;
+    margin: auto;
+    background-color: #FFEE99;
+    padding: 30px;
+/* untuk rgba (0,0,0,1) untuk warna hitam dan rgba (1,1,1,1) untuk warna putih */
+    box-shadow: 0 0 15px 3px black;
+    border-radius: 10px;
+    /* overflow: hidden; */
+}
+
+/* untuk galeri */
+
+.galeri li {
+    width: 120px;
+    height: 120px;
+/* overflow berfungsi sebagai bingkai yang membatasi gambar keluar dari parent nya */
+    /* overflow: hidden; */
+    border: 3px solid #E2852E;
+    float: left;
+    margin-right: 25px;
+/* position relative digunakan untuk membatasi element absolute */
+    position: relative;
+}
+
+.galeri li,
+.galeri li span,
+li img{
+    border-radius: 50%;
+}
+
+.galeri li span {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(225, 130, 100,.5);
+/* position absolute digunakan ketika ingin meletakan elemen yang berada di atas element 
+yang lain */
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    color: rgba(215, 215, 215, 1);
+    text-shadow: 1px 1px 13px black;
+    opacity: 0;
+/* agar perubahanya lebih smooth */
+    transition: .35s;
+}
+
+/* .galeri li span:hover {
+    opacity :1 ;
+}
+*/
+/* atau seperti di bawah */
+.galeri li a:hover span {
+    opacity: 1;
+}
+
+
+.clear {
+    clear: both;
+}
+
+/* overlay */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+/* z-index berfungsi untuk mengatur posisi element */
+    z-index: 99999;
+    /* entah apa yang telah terjadi namun bug nya terselesaikan */
+    /* (bug nya) backround hitam hilang dengan absurd/ada animasinya */
+    /* transition: top .5s; <--- hilangkan ini */
+    /* kasih keadaan awal yang tidak terlihat */
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    /* ternyata menggunakan text-align bukan margin */
+    text-align: center;
+    /* jangan gunakan padding pada keadaan awal */
+}
+
+/* fungsi psuedo class adalah memberikan style secara tertentu */
+.overlay:target {
+    width: auto;
+    height: auto;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .7);
+    /* gunakan padding untuk mengecilkan gambar */
+    padding: 80px;
+}
+
+/* img dalam overlay */
+.overlay img {
+    max-height: 100%;
+    border-radius: 0;
+}
+
+li .overlay:target img {
+/* animation: namaAnimasi durasi timing letakSelesai */
+    animation: zoomin 1s .1s both normal;
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+    animation: fadeaja 2s .1s both normal;
+}
+
+/* navigasi */
+
+.next,.prev {
+    width: 57px;
+    height: 93px;
+    /* untuk menyembunyikan text <a> */
+    text-indent: -99999px;
+    background-image: url(../img/next.png);
+    position: absolute;
+    top: 40%;
+    margin-left: 40px;
+}
+
+.prev {
+    background-image: url(../img/prev.png);
+    margin-left: -96px;
+}
+
+
+
+/* animasi */
+
+@keyframes fadeaja {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        scale: 0;
+        
+    }
+}
+
+@keyframes zoomin {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, .8);
+    }
+}
+
+@keyframes slidedown {
+    0% {
+        opacity: 0;
+        margin-top: -20px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+/* tombol close */
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 540px;
+    line-height: 44px;
+    color: white;
+    background-color: black;
+    border: 3px solid white;
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+
+.overlay:target .close {
+    animation: slidedown 1s 1s ease-out backwards;
+}
+
